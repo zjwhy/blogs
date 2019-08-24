@@ -29,33 +29,28 @@ ssh -T git@github.com
 # 终端自动显示分支
 
 ```
-vi ~/.bash_profile
+vi ~/.bashrc
 ```
 
 \### 显示git分支
 
 ```
-parse_git_branch () {
+function git_branch {  
+   branch="`git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //"`"  
+   if [ "${branch}" != "" ];then  
+       if [ "${branch}" = "(no branch)" ];then  
+           branch="(`git rev-parse --short HEAD`...)"  
+       fi  
+       echo " ($branch)"  
+   fi  
+}  
 
-git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
-
-}
-
- 
-
-BLACK="\[\033[0;38m\]"
-
-RED="\[\033[0;31m\]"
-
-RED_BOLD="\[\033[01;31m\]"
-
-BLUE="\[\033[01;34m\]"
-
-GREEN="\[\033[0;32m\]"
-
- 
-
-export PS1="$BLACK[ \u@$RED\h $GREEN\w$RED_BOLD\$(parse_git_branch)$BLACK ] "
+export PS1='\u@\h \[\033[01;36m\]\W\[\033[01;32m\]$(git_branch)\[\033[00m\] \$ '  
 ```
 
-\####
+刷新bash
+
+```
+sourc e .bashrc
+```
+
