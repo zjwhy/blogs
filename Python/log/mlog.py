@@ -1,35 +1,48 @@
 # encoding=utf-8
-import logging,time
+import logging, time
 
 # log_path是存放日志的路径
 import os
-
 
 # cur_path = os.path.dirname(os.path.realpath(__file__))
 cur_path = os.getcwd()
 log_path = os.path.join(cur_path, 'logs')
 # 如果不存在这个logs文件夹，就自动创建一个
-if not os.path.exists(log_path):os.mkdir(log_path)
-class Log(object):
+if not os.path.exists(log_path): os.mkdir(log_path)
+
+
+class SingletonLog(type):
+    def __init__(self, *args, **kwargs):
+        self.__instance = None
+        super(SingletonLog, self).__init__(*args, **kwargs)
+
+    def __call__(self, *args, **kwargs):
+        if self.__instance is None:
+            self.__instance = super(SingletonLog, self).__call__(*args, **kwargs)
+        return self.__instance
+
+
+class Log(metaclass=SingletonLog):
 
     def __init__(self):
-        # 文件的命名
+        文件的命名
         self.logname = os.path.join(log_path, '%s.log' % time.strftime('%Y_%m_%d'))
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.DEBUG)
         # 日志输出格式
         self.formatter = logging.Formatter('[%(asctime)s] - %(process)d] - %(levelname)s: %(message)s')
+        pass
 
     def __console(self, level, message):
         # 创建一个FileHandler，用于写到本地
         fh = logging.FileHandler(self.logname, 'a', encoding='utf-8')  # 这个是python3的
-        fh.setLevel(logging.INFO)
+        fh.setLevel(logging.ERROR)
         fh.setFormatter(self.formatter)
         self.logger.addHandler(fh)
 
         # 创建一个StreamHandler,用于输出到控制台
         ch = logging.StreamHandler()
-        ch.setLevel(logging.DEBUG)
+        ch.setLevel(logging.ERROR)
         ch.setFormatter(self.formatter)
         self.logger.addHandler(ch)
 
@@ -60,10 +73,24 @@ class Log(object):
         self.__console('error', message)
 
 
+def info(message):
+    Log().info(message)
+
+
+def debug(message):
+    Log().debug(message)
+
+
+def warning(message):
+    Log().warning(message)
+
+
+def error(message):
+    Log().error(message)
+
+
 if __name__ == '__main__':
     log = Log()
     log.debug('debug')
     log.info('info')
     log.warning('warning')
-    log.error('error')
-    print(os.path.dirname(os.path.realpath(__file__)))
