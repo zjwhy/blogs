@@ -15,4 +15,3 @@
 ```
 执行easy_install -U pip
 ```
-
