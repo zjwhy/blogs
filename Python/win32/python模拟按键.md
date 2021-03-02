@@ -121,3 +121,4 @@ win32api.keybd_event(65, 0, win32con.KEYEVENTF_KEYUP, 0)
 
 [**这位兄弟写的关于模拟键盘非常全**](https://bbs.csdn.net/topics/90509805)
 
+[keyinput](https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-keybdinput)
