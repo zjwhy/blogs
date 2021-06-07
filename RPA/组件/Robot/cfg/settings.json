@@ -1,0 +1,56 @@
+{
+    "SHEET_NAME_WITH_DATA":"multi",
+    "ROBOT_DASHBOARD_ADDR":"",
+    "UiAuto": {
+        "executable_path": "",
+        "selenium_driver_type": "",
+        "xlsx_path": ""
+    },
+    "Citrix": {
+        "browser_path" : ""
+    },
+	"Robot_info":{
+        "botName":"",
+        "repOffice":"86",
+        "developerId":"",
+        "requirementId":""
+    },
+    "Robot_run_info_size":{
+        "file_size":""
+    },
+    "Java":{
+        "Jre": "",
+        "Jar": ""
+    },
+    "OCR":{
+        "ocr-online-api": "https://apigw.huawei.com/api/v2/ocr/general-text",
+        "local_download_url": "https://onebox.huawei.com/p/b24fc16eb87670b3fbe9304a711d3367",
+        "common_download_url": "https://antrobot.huawei.com/robotserver/dashboard/developfile/download?is_tool=true&file_path=ocr_model_20200226.rar"
+    },
+
+    "Limit": {
+        "mail": {
+            "send_group":100,
+            "time_interval":0.5,
+            "times": 20
+
+        },
+        "message": {
+            "send_group": 100,
+            "time_interval": 0.5,
+            "times": 20
+        },
+         "voice": {
+             "send_group": 100,
+            "time_interval": 0.5,
+            "times": 20
+        }
+
+    },
+    "email_default_server": {
+        "smtp_server_default": "smtp.huawei.com",
+        "pop_server_default": "popscn.huawei.com"
+    },
+    "robot_properties_name": "robot.properties",
+    "timeout": 20
+}

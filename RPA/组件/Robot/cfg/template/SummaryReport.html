@@ -1,0 +1,68 @@
+﻿<HTML>
+<HEAD><META content="IE=11.0000" http-equiv="X-UA-Compatible">
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.19301"> <TITLE>Robot run report</TITLE>
+  <style>
+    table{
+      table-layout:fixed;
+    }
+
+    td {
+    word-wrap: break-word;
+    }
+
+  </style>
+ </HEAD> 
+<BODY>
+<H2 align="center">Robots summary run report</H2>
+<TABLE width="90%" align="center" border="0" cellspacing="0">
+  <TBODY>
+  <TR>
+    <TD width="230" align="left" style="color: blue;">Start time:</TD>
+    <TD align="left">${begin_time}</TD></TR>
+  <TR>
+    <TD width="230" align="left" style="color: blue;">End time:</TD>
+    <TD align="left">${end_time}</TD>
+  </TR>
+  <TR>
+    <TD style="color: blue;">Total robots:</TD>
+    <TD >${robot_num}</TD>
+    <TD style="color: blue;">Succeed:</TD>
+    <TD style="background-color: green;">${succeed_robot_num}</TD>
+    <TD style="color: blue;">Failed:</TD>
+    <TD style="background-color: red;">${failed_robot_num}</TD>
+    <TD></TD>
+  </TR>
+
+<BR>	
+<TABLE width="90%" align="center" border="0" cellspacing="0">
+  <TBODY>
+
+  </TBODY></TABLE><BR>
+<TABLE width="90%" align="center" bordercolor="#355e82" style="-ms-word-break: break-all; -ms-word-wrap: break-word;" 
+border="1" cellspacing="0">
+  <TBODY>
+  <TR bgcolor="#ffffff">
+
+	<TH width="10%" align="center"
+      style="background-color: rgb(192, 192, 192);">Case </TH>
+    <TH width="10%" align="center"
+      style="background-color: rgb(192, 192, 192);">Start time </TH>
+    <TH width="10%" align="center"
+      style="background-color: rgb(192, 192, 192);">End time </TH>
+
+    <TH width="10%" align="center"
+      style="background-color: rgb(192, 192, 192);">Result </TH>
+    <TH align="center" style="background-color: rgb(192, 192, 192);">Output of print </TH></TR>
+    ${rows_in_table}
+    </TBODY></TABLE><BR><BR>
+<TABLE width="90%" align="center" border="0" cellspacing="0">
+  <TBODY>
+  <TR>
+    <TD><STRONG>Details</STRONG> </TD>
+  </TR></TBODY>
+</TABLE>
+  ${detail_list}
+  <BR>
+</BODY>
+</HTML>

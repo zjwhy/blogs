@@ -1,0 +1,52 @@
+{
+    "allow_list": [
+        {
+            "allow_access_sensitive_cmd": [
+                "append",
+                "type",
+                "fastType",
+                "sendKeysToCursor",
+                "sendKeysToElement",
+                "sendkeys",
+                "citrix.inputVariable",
+                "console.login",
+                "console.run",
+                "sftp.connect",
+                "inform.sendSmsHic",
+                "inform.voiceCallHic",
+                "getpicinfo_online",
+                "getIdCardInfoOcr",
+                "getTrainTicketInfoOcr",
+                "getVatInfoOcr",
+                "getMarriageCertificateInfoOcr",
+                "getTableInfoOcr",
+                "textSegmentationNLP",
+                "textKeyWordsNLP",
+                "textSimilarityNLP",
+                "pop.getEmail",
+                "smtp.sendEmail",
+                "excelexecutemacro",
+                "connectdb",
+                "disconnectdb",
+                "database.callproc",
+                "database.close",
+                "database.connect",
+                "database.execute",
+                "database.query",
+                "mongodb.delete",
+                "mongodb.find",
+                "mongodb.insert",
+                "mongodb.update",
+                "textbox.type",
+                "imap.getemail",
+                "downloadFile",
+                "requestApi",
+                "mc.downloadFile",
+                "mc.deleteFile",
+                "mc.uploadFile",
+                "invokeRestApi",
+                "exec.statement"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+#!/bin/bash
+# Copyright ? Huawei Technologies Co., Ltd. 2020. All rights reserved.
+
+chmod 777 "../python/python3"
+"../python/python3" "antrobot.pyc" $*

@@ -1,0 +1,104 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "simple": {
+            "format": "[%(asctime)s] %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        },
+        "studio": {
+            "format": "{\"time\": \"[%(asctime)s]\", \"log\": \"%(message)s\", \"level\": \"%(level)s\", \"filePath\": \"%(filePath)s\", \"id\": \"%(id)s\"}",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        },
+        "detail":
+        {
+            "format":"[%(asctime)s] [%(levelname)s] - %(name)s.%(module)s(%(funcName)s:%(lineno)s) - %(message)s"
+        }
+    },
+
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "INFO",
+            "formatter": "simple",
+            "stream": "ext://sys.stdout"
+        },
+        "studio": {
+            "class": "logging.StreamHandler",
+            "level": "INFO",
+            "formatter": "studio",
+            "stream": "ext://sys.stdout"
+        },
+        "file_handler": {
+            "class":"logging.handlers.RotatingFileHandler",
+            "level":"INFO",
+            "formatter":"detail",
+            "filename":"robot-runtime.log",
+            "maxBytes":10485760,
+            "backupCount":20,
+            "encoding":"utf8",
+            "state": 0,
+            "filters": [
+                "filter_logger"
+            ]
+        },
+        "file_handler_his": {
+            "class":"logging.handlers.RotatingFileHandler",
+            "level":"INFO",
+            "formatter":"detail",
+            "filename":"robot-runtime-his.log",
+            "maxBytes":10485760,
+            "backupCount":20,
+            "encoding":"utf8",
+            "state": 0,
+            "filters": [
+                "filter_logger"
+            ]
+        },
+        "audit_handler": {
+            "class":"com.huawei.antrobot.utils.log_util.MyRotatingFileHandler",
+            "level":"INFO",
+            "formatter":"simple",
+            "filename":"robot-runtime-audit.log",
+            "maxBytes":10485760,
+            "backupCount":50,
+            "days": 180,
+            "encoding":"utf8",
+            "state": 1,
+            "delay": true,
+            "filters": [
+                "filter_logger"
+            ]
+        }
+    },
+    "loggers": {
+        "": {
+            "handlers": [
+                "file_handler",
+                "file_handler_his"
+            ],
+            "level": "INFO",
+            "propagate": false
+        },
+        "audit": {
+            "handlers": [
+                "audit_handler"
+            ],
+            "level": "INFO",
+            "propagate": false
+
+        },
+        "console": {
+                "level": "INFO",
+                "handlers": [
+                    "console"
+                ]
+            },
+        "studio" : {
+           "level": "INFO",
+            "handlers": [
+                "studio"
+            ]
+        }
+    }
+}

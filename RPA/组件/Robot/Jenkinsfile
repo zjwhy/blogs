@@ -1,0 +1,42 @@
+@Library('codeflow') _
+node("mesos") {
+    stage("init") {
+        cloudBuildConfig {
+            group_id = "g7699e48cc2f246068302f0b0c66225e9"
+            service_id = "22161e30e92a426c9e02ae4079d07092"
+            project_id = "60d7808d0fad48fdbfd4bc82f455bf83"
+            project_name = "ADCRPARobot_CodeFlow"
+            gate_name = "ADC_Build_Gate_CodingStyleCheck_RPA_C"
+        }
+    }
+
+    cloudBuild {
+        jobs = [
+            "cmetrics_Java": {
+                cloudDragonGate()
+            },
+            "cmetrics_C": {
+                cloudDragonGate()
+            },
+            "cmetrics_Python": {
+                cloudDragonGate()
+            },
+            "codemars": {
+                cloudDragonGate()
+            },
+            "codingstylecheck_C": {
+                cloudDragonGate()
+            },
+            "codingstylecheck": {
+                cloudDragonGate()
+            },
+            "codingstylecheck_python": {
+                cloudDragonGate()
+            },
+            "compile": {
+                cloudDragonGate()
+            }
+        ]
+    }
+}
+
