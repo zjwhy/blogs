@@ -30,3 +30,45 @@ sys.getdefaultencoding()
 返回当前 Unicode 实现所使用的默认字符串编码名称。
 ```
 
+# 重定向管道输出编码格式
+
+```
+def check_contain_chinese(check_str):
+    for ch in check_str.decode('utf-8'):
+        if '\u3000' <= ch <= u'\u9fff':
+            return True
+
+
+class RPAPrint():
+    def __init__(self):
+        self.buff = ""
+        self.__console__ = sys.stdout
+
+    def write(self, output_string):
+        if check_contain_chinese(output_string.encode()):
+            self.__console__.write(output_string.encode("unicode_escape").decode('utf-8'))
+        else:
+            self.__console__.write(output_string)
+
+    def flush(self):
+        self.__console__.flush()
+
+    def reset(self):
+        sys.stdout = self.__console__
+
+
+sys.stdout = RPAPrint()
+```
+
+# **更改标准流的编码**
+
+[参考网址](https://www.cnpython.com/qa/35467)
+
+```
+sys.stdout.reconfigure(encoding='utf-8')
+
+# 示例
+import sys
+sys.stdout.reconfigure(encoding='gbk',errors ='replace')
+```
+
