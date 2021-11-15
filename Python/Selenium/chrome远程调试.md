@@ -1,3 +1,22 @@
+# selenium接管方式
+
+1、指定启动参数打开浏览器
+
+```
+# 指定chrome 远程调试接口与用户目录
+chrome.exe --remote-debugging-port=9222 --user-data-dir="C:\selenum\AutomationProfile"
+```
+
+2selenium接管
+
+```python
+self.options = webdriver.ChromeOptions()
+self.options.add_experimental_option("debuggerAddress", "127.0.1:9222")
+self.chromeDriver = webdriver.Chrome(driverPath, options=self.options)
+```
+
+
+
 # chrome远程调试原理分析（CDP协议）
 
 ## 参考链接
